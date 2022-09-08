@@ -1,24 +1,28 @@
 package com.kenzie.unit.two.employee.service.models;
 
 import com.kenzie.ata.ExcludeFromJacocoGeneratedReport;
+import com.kenzie.unit.two.iam.models.Department;
+import com.kenzie.unit.two.iam.models.User;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @ExcludeFromJacocoGeneratedReport
-public class Employee {
-    private final String id;
+public class Employee extends User {
+    private final UUID id;
     private final String userName;
     private final String payCheck;
-    private final String department;
+    private final Department department;
 
-    public Employee(String id, String userName, String department, String payCheck) {
+    public Employee(UUID id, String userName, Department department, String payCheck) {
+        super(id,userName,department);
         this.id = id;
         this.userName = userName;
         this.department = department;
         this.payCheck = payCheck;
     }
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
@@ -30,7 +34,7 @@ public class Employee {
         return payCheck;
     }
 
-    public String getDepartment() {
+    public Department getDepartment() {
         return department;
     }
 

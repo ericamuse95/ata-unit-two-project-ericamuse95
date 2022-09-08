@@ -10,7 +10,7 @@
 export GITHUB_TOKEN=''
 export GITHUB_USERNAME=yourusernameinlowercase
 
-export UNIT_TWO_REPO_NAME=ata-unit-two-project-$GITHUB_USERNAME
+export UNIT_TWO_REPO_NAME=ata-unit-two-project-$ericamuse95
 
 # Do not modify the rest of these unless you have been instructed to do so.
 export UNIT_TWO_PROJECT_NAME=unitproject2

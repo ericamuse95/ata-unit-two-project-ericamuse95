@@ -1,5 +1,7 @@
 package com.kenzie.unit.two.warehouse.service;
 
+import com.kenzie.unit.two.employee.service.EmployeeNotFoundException;
+import com.kenzie.unit.two.employee.service.UserOrRoleNotFoundException;
 import com.kenzie.unit.two.iam.entities.Roles;
 import com.kenzie.unit.two.iam.models.FunctionalRole;
 import com.kenzie.unit.two.iam.models.Role;
@@ -32,11 +34,18 @@ public class WareHouseService {
     }
 
     public boolean canWarehouseUserPackItem(CanUserPackItemRequest request) {
-        Role packItem = roleService.getRoleByRoleName(Roles.PACK_ITEMS.toString());
+        Role packItem = roleService.getRoleByRoleName(Roles.PACK_ITEMS.getRoleName());
+        if (packItem == null) {
+            throw new UserOrRoleNotFoundException("Role cannot be found");
+        }
 
         User user = userService.getUserByUserName(request.getUserName());
+        if (user == null){
+            throw new UserOrRoleNotFoundException("User cannot be found.");
+        }
 
         return userRoleService.doesUserHaveRole(user, packItem);
+
     }
 
     public boolean canInvoiceClient(CanInvoiceClientRequest canInvoiceClientRequest) {
