@@ -57,18 +57,6 @@ public class WareHouseService {
 
         List<Role> roles = userRoleService.getUserRoles(user.getUserName()).getRoles();
 
-        boolean matchCreateInvoiceRole = false;
-        boolean matchViewClientRole = false;
-        if (roles != null) {
-            for (Role role : roles) {
-                if (role.getRoleName().equalsIgnoreCase(Roles.CREATE_INVOICE.getRoleName())) {
-                    matchCreateInvoiceRole = true;
-                }
-                if (role.getRoleName().equalsIgnoreCase(Roles.VIEW_CLIENT.getRoleName())) {
-                    matchViewClientRole = true;
-                }
-            }
-        }
-        return matchCreateInvoiceRole && matchViewClientRole;
+        return invoicingClientRole.matches(roles);
     }
 }
