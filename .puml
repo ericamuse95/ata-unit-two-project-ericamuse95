@@ -1,0 +1,30 @@
+****// How iam, warehouse, and employee interact with each other
+
+//iam, Manage employee permissions
+//Departments
+//Roles
+//FunctionalRole
+//Role
+//user
+//UserRoles
+//DepartmentService
+//RoleService
+//UserRoleService
+//UserService
+//Storage
+
+
+//warehouse, building shipments and computers
+//CanInvoiceClient
+//CanUserPackItem
+//WareHouseService
+
+
+//employee, can be a manager or direct report
+//viewEmployeePayCheck
+//EmployeeNotFoundException
+//EmployeeService
+//UnauthorizedException
+//UserOrRoleNotFoundException
+
+

@@ -19,6 +19,12 @@ public class FunctionalRole {
     // Compare incoming list to the ones required for this class.
     public Boolean matches(List<Role> roleList) {
         // TODO Task 5 - Write your code here ...
-        return null;
+        boolean status = false;
+        for (Role role : roleList){
+            if(role.getRoleName().equalsIgnoreCase(Roles.CREATE_INVOICE.getRoleName())) {
+                status = true;
+            }
+        }
+        return status;
     }
 }

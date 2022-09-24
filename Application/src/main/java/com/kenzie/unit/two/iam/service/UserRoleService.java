@@ -1,5 +1,6 @@
 package com.kenzie.unit.two.iam.service;
 
+import com.kenzie.unit.two.employee.service.UserOrRoleNotFoundException;
 import com.kenzie.unit.two.iam.lambda.models.AssignUserToRoleRequest;
 import com.kenzie.unit.two.iam.lambda.models.GetUserRolesRequest;
 import com.kenzie.unit.two.iam.models.Role;
@@ -35,13 +36,13 @@ public class UserRoleService {
 
     public boolean doesUserHaveRole(User user, Role role) {
         UserRoles userRoles = storage.getUserRoles(user);
-        if (userRoles != null && userRoles.getRoles() != null && role != null) {
-            for (Role userRole : userRoles.getRoles()) {
-                if (role.getRoleName().equalsIgnoreCase(userRole.getRoleName())) {
-                    return true;
-                }
-            }
-        }
-        return false;
+        if(user == null || role == null || userRoles == null){
+            throw new UserOrRoleNotFoundException("The user or role does not exist.");
     }
+        if(userRoles.getRoles() != null){
+        return userRoles.getRoles().contains(role);
+    } else {
+            return false;
+        }
+}
 }
